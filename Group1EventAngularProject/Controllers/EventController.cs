@@ -23,20 +23,17 @@ namespace Group1EventAngularProject.Controllers
         [HttpGet("Favorites")]
         public List<Event> GetFavorites()
         {
-            List<int> favsIds = new List<int>();
+            List<int> favIds = new List<int>();
             List<Event> favorites = new List<Event>();
 
-            foreach(Favorite f in dbContext.Favorites.GroupBy(x => x.EventsId).Select(y => y.First()))
-            {
-                favsIds.Add((int)f.EventsId);
-            }
-            foreach(int n in favsIds)
+            favIds = dbContext.Favorites.Select(y => y.EventsId).ToList();
+
+            foreach(int n in favIds)
             {
                 Event E = dbContext.Events.FirstOrDefault(f => f.Id == n);
                 favorites.Add(E);
             }
             return favorites;
-           
         }
 
     }

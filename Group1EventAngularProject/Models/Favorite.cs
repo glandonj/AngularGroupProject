@@ -9,7 +9,7 @@ public partial class Favorite
 
     public string? UserName { get; set; }
 
-    public int? EventsId { get; set; }
+    public int EventsId { get; set; }
 
     public virtual Event? Events { get; set; }
 }
