@@ -17,4 +17,8 @@ export class EventService {
   getFavorites():Observable<Event[]>{
     return this.http.get<Event[]>(`${this.baseUrl}api/Event/Favorites`);
   }
+
+  addEvent(newEvent:Event):Observable<Event>{
+    return this.http.post<Event>(`${this.baseUrl}api/Event?_category=${newEvent.category}&_name=${newEvent.name}&_date=${newEvent.date}&_location=${newEvent.location}`,{});
+  }
 }

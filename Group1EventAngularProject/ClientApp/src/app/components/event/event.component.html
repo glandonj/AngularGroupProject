@@ -1,5 +1,19 @@
-<h1>Events</h1>
+<h2>Add Event</h2>
+<div>
+    <p>Category</p>
+    <input type="text"[(ngModel)]="newEvent.category"/>
+    <p>Name</p>
+    <input type="text"[(ngModel)]="newEvent.name"/>
+    <p>Date</p>
+    <input type="text" class="form-control" placeholder="ex. MM/DD/YYYY HH:MM PM/AM" [(ngModel)]="newEvent.date" [value] = "newEvent.date | date:'short'"/>
 
+    <p>Location</p>
+    <input type="text"[(ngModel)]="newEvent.location"/>
+
+    <button (click)="addEvent()">Add Event</button>
+</div>
+
+<h1>Events</h1>
 <div *ngFor="let e of events">
     <h3>{{ e.name }}</h3>
 

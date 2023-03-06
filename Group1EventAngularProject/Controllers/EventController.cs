@@ -35,6 +35,21 @@ namespace Group1EventAngularProject.Controllers
             }
             return favorites;
         }
+        [HttpPost()]
+        public Event addEvent(string _category, string _name, DateTime _date, string _location)
+        {
+            Event newEvent = new Event()
+            {
+                Category = _category,
+                Name = _name,
+                Date = _date,
+                Location = _location
+            };
+            dbContext.Events.Add(newEvent);
+            dbContext.SaveChanges();
+
+            return newEvent;
+        }
 
     }
 }
