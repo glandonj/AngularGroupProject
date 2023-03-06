@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Event } from '../Models/event';
+import { Favorites } from '../Models/favorites';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class EventService {
     return this.http.get<Event[]>(`${this.baseUrl}api/Event/Events`);
   }
 
-  getFavorites():Observable<Event[]>{
-    return this.http.get<Event[]>(`${this.baseUrl}api/Event/Favorites`);
+  getFavorites():Observable<Favorites[]>{
+    return this.http.get<Favorites[]>(`${this.baseUrl}api/Event/Favorites`);
   }
 
   addEvent(newEvent:Event):Observable<Event>{
