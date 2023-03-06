@@ -13,13 +13,11 @@
     <button (click)="addEvent()">Add Event</button>
 </div>
 
-<h1>Events</h1>
-<div *ngFor="let e of events">
-    <h3>{{ e.name }}</h3>
 
-    <p>{{ e.category }}</p>
+<h1>All Events</h1>
+<ul>
+    <div *ngFor="let e of events; index as i">
+        <li><a routerLink="/event/{{ i + 1}}">{{ e.name }}</a></li>
+    </div>
+</ul>
 
-    <p>{{ e.date | date:'short' }}</p>
-
-    <p>{{ e.location }}</p>
-</div>

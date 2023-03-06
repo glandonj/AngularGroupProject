@@ -50,7 +50,11 @@ namespace Group1EventAngularProject.Controllers
 
             return newEvent;
         }
-
+        [HttpGet("{id}")]
+        public Event getDetails(int id)
+        {
+            return dbContext.Events.FirstOrDefault(e => e.Id == id);
+        }
     }
 }
 

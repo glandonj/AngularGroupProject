@@ -9,7 +9,9 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
-import { EventComponent } from './components/event/event.component';
+import { EventComponent } from './Components/event/event.component';
+import { EventDetailsComponent } from './Components/event-details/event-details.component';
+import { FavoritesComponent } from './Components/favorites/favorites.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { EventComponent } from './components/event/event.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    EventComponent
+    EventComponent,
+    EventDetailsComponent,
+    FavoritesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -29,8 +33,11 @@ import { EventComponent } from './components/event/event.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'event', component: EventComponent },
+      { path: 'favorites', component:FavoritesComponent },
+      { path: 'event/:id', component: EventDetailsComponent },
     ])
   ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent]
 })

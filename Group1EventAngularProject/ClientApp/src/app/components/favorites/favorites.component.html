@@ -1,0 +1,4 @@
+<h1>Favorites</h1>
+<ul *ngFor="let f of favorites; index as i">
+    <li><a routerLink="/event/{{ i + 1}}">{{ f.name }}</a></li>
+</ul>

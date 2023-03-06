@@ -9,17 +9,22 @@ import { Favorites } from '../Models/favorites';
 })
 export class EventService {
 
+  // events:Event[]=[];
   constructor(@Inject('BASE_URL') private baseUrl: string, private http:HttpClient) { }
 
   getEvents():Observable<Event[]>{
     return this.http.get<Event[]>(`${this.baseUrl}api/Event/Events`);
   }
 
-  getFavorites():Observable<Favorites[]>{
-    return this.http.get<Favorites[]>(`${this.baseUrl}api/Event/Favorites`);
+  getFavorites():Observable<Event[]>{
+    return this.http.get<Event[]>(`${this.baseUrl}api/Event/Favorites`);
   }
 
   addEvent(newEvent:Event):Observable<Event>{
     return this.http.post<Event>(`${this.baseUrl}api/Event?_category=${newEvent.category}&_name=${newEvent.name}&_date=${newEvent.date}&_location=${newEvent.location}`,{});
+  }
+
+  eventDetails(id:number):Observable<Event>{
+    return this.http.get<Event>(`${this.baseUrl}api/Event/${id}`);
   }
 }
