@@ -1,1 +1,11 @@
-<p>event works!</p>
+<h1>Events</h1>
+
+<div *ngFor="let e of events">
+    <h3>{{ e.name }}</h3>
+
+    <p>{{ e.category }}</p>
+
+    <p>{{ e.date | date:'short' }}</p>
+
+    <p>{{ e.location }}</p>
+</div>
