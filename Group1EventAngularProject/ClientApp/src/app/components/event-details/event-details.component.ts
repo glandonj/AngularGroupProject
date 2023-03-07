@@ -29,7 +29,7 @@ export class EventDetailsComponent implements OnInit {
   }
 
   addFavorite():void{
-    this.newFavorite.eventsid = this.result.id;
+    this.newFavorite.eventsId = this.result.id;
     this.eventService.addFavorite(this.newFavorite).subscribe((response:Favorites)=>{
       console.log(response);
     });
