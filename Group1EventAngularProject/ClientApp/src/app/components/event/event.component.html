@@ -17,7 +17,10 @@
 <h1>All Events</h1>
 <ul>
     <div *ngFor="let e of events; index as i">
-        <li><a routerLink="/event/{{ i + 1}}">{{ e.name }}</a></li>
+        <li>
+            <a routerLink="/event/{{ i + 1}}">{{ e.name }}</a>
+            <p>{{ e.date | date:'short' }}</p>
+        </li>
     </div>
 </ul>
 

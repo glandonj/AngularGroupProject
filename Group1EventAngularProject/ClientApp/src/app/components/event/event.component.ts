@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/Service/event.service';
 import { Event } from 'src/app/Models/event';
+import { Favorites } from 'src/app/Models/favorites';
 
 @Component({
   selector: 'app-event',
@@ -13,6 +14,7 @@ export class EventComponent implements OnInit {
 
   events:Event[]=[];
   newEvent:Event={} as Event;
+  newFavorite:Favorites={} as Favorites;
   
 
   ngOnInit(): void {
@@ -25,7 +27,6 @@ export class EventComponent implements OnInit {
       this.events=response;
     })
   }
-
 
 
   addEvent():void{

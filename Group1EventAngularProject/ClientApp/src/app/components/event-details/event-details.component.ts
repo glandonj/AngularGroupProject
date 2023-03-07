@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EventService } from 'src/app/Service/event.service';
 import { Event } from 'src/app/Models/event';
+import { Favorites } from 'src/app/Models/favorites';
+import { FavoritesComponent } from '../favorites/favorites.component';
 
 @Component({
   selector: 'app-event-details',
@@ -14,6 +16,7 @@ export class EventDetailsComponent implements OnInit {
   constructor(private route:ActivatedRoute, private eventService:EventService) { }
   events:Event[]=[];
   result:Event = {} as Event;
+  newFavorite:Favorites={} as Favorites;
 
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
@@ -22,6 +25,13 @@ export class EventDetailsComponent implements OnInit {
 
     this.eventService.eventDetails(id).subscribe((response:Event)=>{
       this.result =response;
+    });
+  }
+
+  addFavorite():void{
+    this.newFavorite.eventsid = this.result.id;
+    this.eventService.addFavorite(this.newFavorite).subscribe((response:Favorites)=>{
+      console.log(response);
     });
   }
 

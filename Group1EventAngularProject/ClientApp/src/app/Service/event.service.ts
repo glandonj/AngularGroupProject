@@ -27,4 +27,8 @@ export class EventService {
   eventDetails(id:number):Observable<Event>{
     return this.http.get<Event>(`${this.baseUrl}api/Event/${id}`);
   }
+
+  addFavorite(newFavorite:Favorites):Observable<Favorites>{
+    return this.http.post<Favorites>(`${this.baseUrl}api/Event/addFavorite?_username=${newFavorite.username}&_eventsid=${newFavorite.eventsid}`,{});
+  }
 }

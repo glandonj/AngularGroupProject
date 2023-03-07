@@ -2,3 +2,7 @@
 <p>{{ result.category }}</p>
 <p>{{ result.date | date:'short' }}</p>
 <p>{{ result.location }}</p>
+<p>Add UserName</p>
+<input type="text"[(ngModel)]="newFavorite.username"/>
+<!-- <input type="number" [(ngModel)]="newFavorite.eventsid"/> -->
+<button (click)="addFavorite()">Add to Favorites</button>
