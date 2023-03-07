@@ -15,6 +15,7 @@ export class FavoritesComponent implements OnInit {
   constructor(private eventservice:EventService) { }
   favorites: Event[]=[];
   userfav: Favorites[]=[];
+  user:string="";
 
   ngOnInit(): void {
     this.getFavorites();
@@ -30,7 +31,7 @@ export class FavoritesComponent implements OnInit {
 
   removeFavorite(index:number): void {
     console.log(index)
-      let findex=this.userfav.findIndex(f=> f.eventsId==this.favorites[index].id)
+      let findex=this.userfav.findIndex(f=> f.eventsId==this.favorites[index].id&&f.userName==this.user);
       console.log(findex)
       this.eventservice.removeFavorite(this.userfav[findex]).subscribe((response:Favorites)=> {
       console.log(response);
@@ -46,4 +47,11 @@ export class FavoritesComponent implements OnInit {
     })
   }
   
+  userFavorites(user:string): void {
+    this.eventservice.userFavorites(user).subscribe((response:Event[])=>{
+      console.log(response);
+      this.favorites=response;
+    })
+  }
+
 }

@@ -82,13 +82,24 @@ namespace Group1EventAngularProject.Controllers
             return fav;
         }
 
-
         [HttpGet("listFavorite")]
         public List <Favorite> listFavorite() 
         {
             return dbContext.Favorites.ToList();
         }
-        
+
+        [HttpGet("userFavorites")]
+        public List<Event> userFavorites(string user)
+        {
+            List<Favorite> userfavs = dbContext.Favorites.Where(u => u.UserName == user).ToList();
+            List<Event> events = new List<Event>();
+            foreach(Favorite E in userfavs)
+            {
+                Event fav = dbContext.Events.FirstOrDefault(f => f.Id == E.EventsId);
+                events.Add(fav);
+            }
+            return events;
+        }
     }
 }
 
