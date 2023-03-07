@@ -15,7 +15,10 @@ export class EventComponent implements OnInit {
   events:Event[]=[];
   newEvent:Event={} as Event;
   newFavorite:Favorites={} as Favorites;
+<<<<<<< HEAD
   
+=======
+>>>>>>> 7f5d24d3110d1920d764f3737ebf9de705eeffc2
 
   ngOnInit(): void {
     this.getEvents();
@@ -27,12 +30,23 @@ export class EventComponent implements OnInit {
       this.events=response;
     })
   }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7f5d24d3110d1920d764f3737ebf9de705eeffc2
   addEvent():void{
     this.eventservice.addEvent(this.newEvent).subscribe((response:Event)=>{
       console.log(response);
+      this.getEvents();      
+    });
+  }
+  addFavorite():void{
+    this.eventservice.addFavorite(this.newFavorite).subscribe((response:Favorites)=>{
+      console.log(response);
       this.getEvents();
+
+
     });
   }
 }

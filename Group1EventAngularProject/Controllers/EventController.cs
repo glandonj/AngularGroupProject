@@ -55,7 +55,10 @@ namespace Group1EventAngularProject.Controllers
         {
             return dbContext.Events.FirstOrDefault(e => e.Id == id);
         }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7f5d24d3110d1920d764f3737ebf9de705eeffc2
         [HttpPost("addFavorite")]
         public Favorite addFavorite(string _username, int _eventsid)
         {
@@ -66,6 +69,10 @@ namespace Group1EventAngularProject.Controllers
             };
             dbContext.Favorites.Add(newFavorite);
             dbContext.SaveChanges();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7f5d24d3110d1920d764f3737ebf9de705eeffc2
             return newFavorite;
 
         }
