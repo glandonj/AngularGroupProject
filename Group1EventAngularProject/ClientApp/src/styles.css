@@ -15,3 +15,25 @@ code {
   border-color: #1861ac;
 }
 
+/* You can add global styles to this file, and also import other style files */
+
+/* Provide sufficient contrast against white background */
+
+body {
+    background: linear-gradient(to right, grey, rgb(242, 242, 246));   
+}
+
+*{
+  font-family:sans-serif;
+  font-weight:500;   
+}
+
+.card {
+  /* Add shadows to create the "card" effect */
+  background-color: #daebf5;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+  border:5px solid #555;
+}

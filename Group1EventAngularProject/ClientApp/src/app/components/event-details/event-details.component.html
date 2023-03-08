@@ -7,7 +7,7 @@
     <br>
     <p>Add UserName</p>
     <input type="text"[(ngModel)]="newFavorite.userName" (keydown.enter)="user"/>
-    <button (click)="addFavorite()" (click)="toggleFavConfirm()" (click)="addFav=false" class="btn">Submit</button>
+    <button (click)="addFavorite()" (click)="toggleFavConfirm()" (click)="addFav=false" class="btn-primary">Submit</button>
 </div>
     <div *ngIf="favConfirm">
         <h3><br>{{newFavorite.userName}} added {{result.name}} to <a routerLink="/favorites">Favorites List.</a></h3>

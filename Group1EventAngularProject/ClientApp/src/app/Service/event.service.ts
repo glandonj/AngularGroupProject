@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -21,7 +22,9 @@ export class EventService {
   }
 
   addEvent(newEvent:Event):Observable<Event>{
-    return this.http.post<Event>(`${this.baseUrl}api/Event?_category=${newEvent.category}&_name=${newEvent.name}&_date=${newEvent.date}&_location=${newEvent.location}`,{});
+    let datePipe:DatePipe=new DatePipe('en-US');
+    console.log(datePipe.transform(newEvent.date, 'short'));
+    return this.http.post<Event>(`${this.baseUrl}api/Event?_category=${newEvent.category}&_name=${newEvent.name}&_date=${datePipe.transform(newEvent.date, 'short')}&_location=${newEvent.location}`,{});
   }
 
   eventDetails(id:number):Observable<Event>{

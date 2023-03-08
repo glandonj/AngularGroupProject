@@ -16,6 +16,12 @@ export class FavoritesComponent implements OnInit {
   favorites: Event[]=[];
   userfav: Favorites[]=[];
   user:string="";
+  usernames = new Array(
+    "John",
+    "Jason",
+    "Josh"
+  );
+  selected ="-----";
 
   ngOnInit(): void {
     this.getFavorites();
@@ -53,5 +59,12 @@ export class FavoritesComponent implements OnInit {
       console.log(response);
     })
   }
+
+  // update(){
+  //   this.selected = e.target.value;
+  // }
+  // getByUser(uname:string):Favorites[]{
+  //   return this.userfav.filter((u:Favorites)=>u.userName.toLowerCase().trim()==uname.toLowerCase().trim());
+  // }
 
 }

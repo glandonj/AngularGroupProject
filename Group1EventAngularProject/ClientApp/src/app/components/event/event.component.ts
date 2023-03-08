@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/Service/event.service';
 import { Event } from 'src/app/Models/event';
 import { Favorites } from 'src/app/Models/favorites';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-event',
@@ -17,6 +18,9 @@ export class EventComponent implements OnInit {
   newFavorite:Favorites={} as Favorites;
   AddEvent:boolean=false;
   eventConfirm:boolean=false;
+  edate:Date={} as Date;
+  etime:Date={} as Date;
+
 
   ngOnInit(): void {
     this.getEvents();
@@ -38,6 +42,10 @@ export class EventComponent implements OnInit {
   }
 
   addEvent():void{
+    let combinedDate:string=this.edate.toString()+"T"+this.etime.toString()+":00.000";
+    console.log(combinedDate);
+    this.newEvent.date=new Date(combinedDate);
+    console.log(this.newEvent.date);
     this.eventservice.addEvent(this.newEvent).subscribe((response:Event)=>{
       console.log(response);
       this.getEvents();      

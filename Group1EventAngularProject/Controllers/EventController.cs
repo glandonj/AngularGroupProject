@@ -17,7 +17,7 @@ namespace Group1EventAngularProject.Controllers
         [HttpGet("Events")]
         public List<Event> GetEvents()
         {
-            return dbContext.Events.ToList();
+            return dbContext.Events.OrderBy(e=>e.Date).Where(events=>events.Date>=DateTime.Now).ToList();
         }
 
         [HttpGet("Favorites")]
@@ -98,7 +98,7 @@ namespace Group1EventAngularProject.Controllers
                 Event fav = dbContext.Events.FirstOrDefault(f => f.Id == E.EventsId);
                 events.Add(fav);
             }
-            return events;
+            return events.Where(e => e.Date >= DateTime.Now).ToList();
         }
     }
 }

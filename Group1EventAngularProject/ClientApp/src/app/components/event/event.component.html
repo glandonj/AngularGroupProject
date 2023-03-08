@@ -7,12 +7,13 @@
     <p>Name</p>
     <input type="text"[(ngModel)]="newEvent.name"/>
     <p>Date</p>
-    <input type="text" class="form-control" placeholder="ex. MM/DD/YYYY HH:MM PM/AM" [(ngModel)]="newEvent.date" [value] = "newEvent.date | date:'short'"/>
-
+    <input type="date" class="form-control" [(ngModel)]="edate" [value] = "newEvent.date | date:'short'" />
+    <p>Time</p>
+    <input type="time" class="form-control" [(ngModel)]="etime" [value] = "newEvent.date | date:'short'" />
     <p>Location</p>
     <input type="text"[(ngModel)]="newEvent.location"/>
 
-    <button (click)="addEvent()" (click)="toggleConfirm()" (click)="AddEvent=false" class="btn">Add</button>
+    <button (click)="addEvent()" (click)="toggleConfirm()" (click)="AddEvent=false" class="btn-primary">Add</button>
     </div>
     <div *ngIf="eventConfirm">
         <h2>{{newEvent.name}} has been added!</h2>
@@ -22,8 +23,8 @@
 <h1>All Events</h1>
 <ul>
     <div *ngFor="let e of events; index as i">
-        <li>
-            <a routerLink="/event/{{ i + 1}}">{{ e.name }}</a>
+        <li class="card">
+            <h3><a routerLink="/event/{{e.id}}">{{ e.name }}</a></h3>
             <p>{{ e.date | date:'short' }}</p>
         </li>
     </div>
