@@ -1,16 +1,13 @@
 <h1>Favorites</h1>
 <p>Enter UserName</p>
-<input type="text" [(ngModel)]="user"/>
+<input type="text" [(ngModel)]="user" (keydown.enter)="userFavorites(user)"/>
 <button (click)="userFavorites(user)">Submit</button>
 <div *ngIf="user.length>0">
-    <!-- <div *ngFor="let u of userfav"> -->
-        <ol *ngFor="let f of favorites; index as i">
+        <ul *ngFor="let f of favorites; index as i">
             <li><a routerLink="/event/{{ i + 1}}">{{f.id}}: {{ f.name }}</a></li>
                 <p>{{ f.date | date:'short' }}</p>
-                <!-- <p>{{u.userName}}</p> -->
                 <button (click)="removeFavorite(i)">X</button>
-    </ol>
-    <!-- </div> -->
+    </ul>
 </div>
 
  

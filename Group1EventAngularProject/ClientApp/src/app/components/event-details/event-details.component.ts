@@ -17,6 +17,9 @@ export class EventDetailsComponent implements OnInit {
   events:Event[]=[];
   result:Event = {} as Event;
   newFavorite:Favorites={} as Favorites;
+  addFav:boolean=false;
+  user:string="";
+  favConfirm:boolean=false;
 
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
@@ -35,4 +38,11 @@ export class EventDetailsComponent implements OnInit {
     });
   }
 
+  toggleAddFavorite():void{
+    this.addFav=!this.addFav;
+  }
+
+  toggleFavConfirm():void{
+    this.favConfirm=!this.favConfirm;
+  }
 }

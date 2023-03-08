@@ -15,7 +15,8 @@ export class EventComponent implements OnInit {
   events:Event[]=[];
   newEvent:Event={} as Event;
   newFavorite:Favorites={} as Favorites;
-  
+  AddEvent:boolean=false;
+  eventConfirm:boolean=false;
 
   ngOnInit(): void {
     this.getEvents();
@@ -28,6 +29,13 @@ export class EventComponent implements OnInit {
     })
   }
 
+  toggleAdd():void{
+    this.AddEvent =!this.AddEvent;
+  }
+
+  toggleConfirm():void{
+    this.eventConfirm =!this.eventConfirm;
+  }
 
   addEvent():void{
     this.eventservice.addEvent(this.newEvent).subscribe((response:Event)=>{

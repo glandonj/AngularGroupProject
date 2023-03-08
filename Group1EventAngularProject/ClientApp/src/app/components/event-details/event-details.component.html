@@ -2,6 +2,16 @@
 <p>{{ result.category }}</p>
 <p>{{ result.date | date:'short' }}</p>
 <p>{{ result.location }}</p>
-<p>Add UserName</p>
-<input type="text"[(ngModel)]="newFavorite.userName"/>
-<button (click)="addFavorite()">Add to Favorites</button>
+<button (click)="toggleAddFavorite()" (click)="favConfirm=false" class="btn">Add to Favorites</button>
+<div *ngIf="addFav">
+    <br>
+    <p>Add UserName</p>
+    <input type="text"[(ngModel)]="newFavorite.userName" (keydown.enter)="user"/>
+    <button (click)="addFavorite()" (click)="toggleFavConfirm()" (click)="addFav=false" class="btn">Submit</button>
+</div>
+    <div *ngIf="favConfirm">
+        <h3><br>{{newFavorite.userName}} added {{result.name}} to <a routerLink="/favorites">Favorites List.</a></h3>
+    </div>
+
+<br><br>
+<p><a routerLink="/event">Back to All Events</a></p>

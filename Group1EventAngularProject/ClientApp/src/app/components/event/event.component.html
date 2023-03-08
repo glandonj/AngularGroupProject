@@ -1,7 +1,9 @@
-<h2>Add Event</h2>
-<div>
+<button (click)="toggleAdd()" (click)="eventConfirm=false" class="btn">Add Event</button>
+<br><br>
+
+<div *ngIf="AddEvent">
     <p>Category</p>
-    <input type="text"[(ngModel)]="newEvent.category"/>
+    <input type="text"[(ngModel)]="newEvent.category" />
     <p>Name</p>
     <input type="text"[(ngModel)]="newEvent.name"/>
     <p>Date</p>
@@ -10,8 +12,11 @@
     <p>Location</p>
     <input type="text"[(ngModel)]="newEvent.location"/>
 
-    <button (click)="addEvent()">Add Event</button>
-</div>
+    <button (click)="addEvent()" (click)="toggleConfirm()" (click)="AddEvent=false" class="btn">Add</button>
+    </div>
+    <div *ngIf="eventConfirm">
+        <h2>{{newEvent.name}} has been added!</h2>
+    </div>
 
 
 <h1>All Events</h1>
