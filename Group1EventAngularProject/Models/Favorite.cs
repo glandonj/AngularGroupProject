@@ -10,6 +10,6 @@ public partial class Favorite
     public string? UserName { get; set; }
 
     public int EventsId { get; set; }
-
+    [System.Text.Json.Serialization.JsonIgnore]
     public virtual Event? Events { get; set; }
 }

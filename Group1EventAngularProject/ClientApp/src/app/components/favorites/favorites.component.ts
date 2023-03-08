@@ -28,15 +28,22 @@ export class FavoritesComponent implements OnInit {
       this.favorites=response;
     })
   }
+    
+  userFavorites(user:string): void {
+    this.eventservice.userFavorites(user).subscribe((response:Event[])=>{
+      console.log(response);
+      this.favorites=response;
+    })
+  }
 
   removeFavorite(index:number): void {
     console.log(index)
-      let findex=this.userfav.findIndex(f=> f.eventsId==this.favorites[index].id&&f.userName==this.user);
+      let findex=this.userfav.findIndex(f=> f.eventsId==this.favorites[index].id && this.user==f.userName);
       console.log(findex)
       this.eventservice.removeFavorite(this.userfav[findex]).subscribe((response:Favorites)=> {
       console.log(response);
-      this.userfav.splice(index,1)
-      this.getFavorites();
+      this.userfav.splice(index,1);
+      this.userFavorites(this.user);
     })
   } 
 
@@ -44,13 +51,6 @@ export class FavoritesComponent implements OnInit {
     this.eventservice.listFavorite().subscribe((response:Favorites[])=>{
       this.userfav=response;
       console.log(response);
-    })
-  }
-  
-  userFavorites(user:string): void {
-    this.eventservice.userFavorites(user).subscribe((response:Event[])=>{
-      console.log(response);
-      this.favorites=response;
     })
   }
 

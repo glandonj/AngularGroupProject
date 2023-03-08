@@ -88,7 +88,7 @@ namespace Group1EventAngularProject.Controllers
             return dbContext.Favorites.ToList();
         }
 
-        [HttpGet("userFavorites")]
+        [HttpGet("Favorites/{user}")]
         public List<Event> userFavorites(string user)
         {
             List<Favorite> userfavs = dbContext.Favorites.Where(u => u.UserName == user).ToList();

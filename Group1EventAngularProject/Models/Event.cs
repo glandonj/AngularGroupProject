@@ -14,6 +14,6 @@ public partial class Event
     public DateTime? Date { get; set; }
 
     public string? Location { get; set; }
-
+    [System.Text.Json.Serialization.JsonIgnore]
     public virtual ICollection<Favorite> Favorites { get; } = new List<Favorite>();
 }
