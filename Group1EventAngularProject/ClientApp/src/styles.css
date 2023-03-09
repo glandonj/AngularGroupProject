@@ -20,7 +20,7 @@ code {
 /* Provide sufficient contrast against white background */
 
 body {
-    background: linear-gradient(to right, grey, rgb(242, 242, 246));   
+    background: linear-gradient(to right, grey, rgb(242, 242, 246)); 
 }
 
 *{
@@ -34,6 +34,18 @@ body {
   padding: 10px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 40%;
+  width: 100%;
   border:5px solid #555;
+}
+
+.centered-block {
+  display: block;
+  margin: auto;
+  max-height: 500px;
+  max-width: 500px;
+}
+
+.content {
+  max-width: 500px;
+  margin: auto;
 }

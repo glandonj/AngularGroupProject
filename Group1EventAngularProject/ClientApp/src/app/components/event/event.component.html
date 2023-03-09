@@ -1,6 +1,7 @@
+    <!-- Toggle button to display Add Event Form -->
 <button (click)="toggleAdd()" (click)="eventConfirm=false" class="btn">Add Event</button>
 <br><br>
-
+    <!-- Add Event Form -->
 <div *ngIf="AddEvent">
     <p>Category</p>
     <input type="text"[(ngModel)]="newEvent.category" id="category"/>
@@ -21,23 +22,27 @@
         <h2>{{eventName}} has been added!</h2>
     </div>
     
-    <!-- Form Not Complete -->
+    <!-- Form Not Complete feedback -->
     <div *ngIf="!formcomplete">
         <h2 class="text-danger">Form not completed. Event not added.</h2>
     </div>
 
     <h1>Events</h1>
-    <!-- Choose Category  -->
-    <p>Filter by Category</p>
-   
+    <!-- Choose Category logic-->
+    <p>Filter by Category or <button (click)="getEvents()" class="btn-dark">Get All Events</button></p>
+
     <input list="categories" name="categories" [(ngModel)]="category" (keydown.enter)="chooseCategory(category)"/>
     <datalist id="categories">
     <option *ngFor="let category of categories" [value]="category">
     </datalist>
     <button (click)="chooseCategory(category)" class="btn-primary">Submit</button>
     <ul>
-        <button (click)="getEvents()" class="btn-primary">Get All Events</button>
-    <div *ngFor="let e of events; index as i">
+    
+    <!-- Get all Events button -->
+        
+    
+    <!-- Events display -->
+   <div *ngFor="let e of events; index as i">
         <li class="card">
             <h3><a routerLink="/event/{{e.id}}">{{ e.name }}</a></h3>
             <p>{{ e.date | date:'short' }}</p>

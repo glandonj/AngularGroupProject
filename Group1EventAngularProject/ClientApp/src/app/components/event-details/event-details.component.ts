@@ -20,6 +20,8 @@ export class EventDetailsComponent implements OnInit {
   addFav:boolean=false;
   user:string="";
   favConfirm:boolean=false;
+  userfav: Favorites[]=[];
+  usernames = new Array();
 
   ngOnInit(){
     const routeParams = this.route.snapshot.paramMap;
@@ -29,6 +31,7 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.eventDetails(id).subscribe((response:Event)=>{
       this.result =response;
     });
+    this.listFavorite();
   }
 
   addFavorite():void{
@@ -36,6 +39,14 @@ export class EventDetailsComponent implements OnInit {
     this.eventService.addFavorite(this.newFavorite).subscribe((response:Favorites)=>{
       console.log(response);
     });
+  }
+
+  listFavorite():void {
+    this.eventService.listFavorite().subscribe((response:Favorites[])=>{
+      this.userfav=response;
+      this.usernames=[...new Set(this.userfav.map(item => item.userName))]
+      console.log(response);
+    })
   }
 
   toggleAddFavorite():void{

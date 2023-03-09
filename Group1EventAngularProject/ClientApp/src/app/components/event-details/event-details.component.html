@@ -5,8 +5,11 @@
 <button (click)="toggleAddFavorite()" (click)="favConfirm=false" class="btn">Add to Favorites</button>
 <div *ngIf="addFav">
     <br>
-    <p>Add UserName</p>
-    <input type="text"[(ngModel)]="newFavorite.userName" (keydown.enter)="user"/>
+    <p>Select Username or add new</p>
+    <input list="usernames" name="usernames" [(ngModel)]="newFavorite.userName" (keydown.enter)="user" 
+    (keydown.enter)="addFavorite()" (keydown.enter)="toggleFavConfirm()" (keydown.enter)="addFav=false" /><datalist id="usernames">
+        <option *ngFor="let user of usernames" [value]="user">
+</datalist>
     <button (click)="addFavorite()" (click)="toggleFavConfirm()" (click)="addFav=false" class="btn-primary">Submit</button>
 </div>
     <div *ngIf="favConfirm">

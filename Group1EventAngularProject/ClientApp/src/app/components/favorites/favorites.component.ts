@@ -16,12 +16,7 @@ export class FavoritesComponent implements OnInit {
   favorites: Event[]=[];
   userfav: Favorites[]=[];
   user:string="";
-  usernames = new Array(
-    "John",
-    "Jason",
-    "Josh"
-  );
-  selected ="-----";
+  usernames = new Array();
 
   ngOnInit(): void {
     this.getFavorites();
