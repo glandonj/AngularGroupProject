@@ -20,6 +20,9 @@ export class EventComponent implements OnInit {
   eventConfirm:boolean=false;
   edate:Date={} as Date;
   etime:Date={} as Date;
+  formcomplete:boolean=true;
+  eventName:string="";
+  categories = new Array();
 
 
   ngOnInit(): void {
@@ -30,6 +33,8 @@ export class EventComponent implements OnInit {
     this.eventservice.getEvents().subscribe((response:Event[])=> {
       console.log(response);
       this.events=response;
+      this.categories=[...new Set(this.events.map(item => item.category))]
+      console.log(this.categories)
     })
   }
 
@@ -46,8 +51,20 @@ export class EventComponent implements OnInit {
     console.log(combinedDate);
     this.newEvent.date=new Date(combinedDate);
     console.log(this.newEvent.date);
+    if(!this.newEvent.name || !this.newEvent.category || !this.newEvent.location || Object.keys(this.edate).length===0 || Object.keys(this.etime).length===0){
+      console.log("left");
+      this.formcomplete=false;
+      this.toggleConfirm();
+      return
+    }
+    this.formcomplete=true;
+    console.log("right");
     this.eventservice.addEvent(this.newEvent).subscribe((response:Event)=>{
       console.log(response);
+      this.eventName=this.newEvent.name
+      this.newEvent={} as Event;
+      this.edate={} as Date;
+      this.etime={} as Date;
       this.getEvents();      
     });
   }
@@ -58,5 +75,6 @@ export class EventComponent implements OnInit {
 
     });
   }
+
 
 }

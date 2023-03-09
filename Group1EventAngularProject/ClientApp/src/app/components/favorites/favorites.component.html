@@ -1,7 +1,11 @@
 <h1>Favorites</h1>
 <p>Enter UserName</p>
-<input type="text" [(ngModel)]="user" (keydown.enter)="userFavorites(user)"/>
+<input list="usernames" name="usernames" [(ngModel)]="user" (keydown.enter)="userFavorites(user)"/><datalist id="usernames">
+        <option *ngFor="let user of usernames" [value]="user">
+</datalist>
 <button (click)="userFavorites(user)" class="btn-primary">Submit</button>
+<!-- <input type="text" [(ngModel)]="user" (keydown.enter)="userFavorites(user)"/>
+<button (click)="userFavorites(user)" class="btn-primary">Submit</button> -->
 <br><br>
 <div *ngIf="user.length>0">
         <div *ngFor="let f of favorites; index as i" class="card">

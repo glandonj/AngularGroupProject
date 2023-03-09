@@ -56,6 +56,7 @@ export class FavoritesComponent implements OnInit {
     listFavorite():void {
     this.eventservice.listFavorite().subscribe((response:Favorites[])=>{
       this.userfav=response;
+      this.usernames=[...new Set(this.userfav.map(item => item.userName))]
       console.log(response);
     })
   }

@@ -3,20 +3,23 @@
 
 <div *ngIf="AddEvent">
     <p>Category</p>
-    <input type="text"[(ngModel)]="newEvent.category" />
+    <input type="text"[(ngModel)]="newEvent.category" id="category"/>
     <p>Name</p>
-    <input type="text"[(ngModel)]="newEvent.name"/>
+    <input type="text"[(ngModel)]="newEvent.name" id="name"/>
     <p>Date</p>
-    <input type="date" class="form-control" [(ngModel)]="edate" [value] = "newEvent.date | date:'short'" />
+    <input type="date" class="form-control" [(ngModel)]="edate" [value] = "newEvent.date | date:'short'" id="date"/>
     <p>Time</p>
-    <input type="time" class="form-control" [(ngModel)]="etime" [value] = "newEvent.date | date:'short'" />
+    <input type="time" class="form-control" [(ngModel)]="etime" [value] = "newEvent.date | date:'short'" id="time"/>
     <p>Location</p>
-    <input type="text"[(ngModel)]="newEvent.location"/>
+    <input type="text"[(ngModel)]="newEvent.location" id="location"/>
 
     <button (click)="addEvent()" (click)="toggleConfirm()" (click)="AddEvent=false" class="btn-primary">Add</button>
     </div>
     <div *ngIf="eventConfirm">
-        <h2>{{newEvent.name}} has been added!</h2>
+        <h2>{{eventName}} has been added!</h2>
+    </div>
+    <div *ngIf="!formcomplete">
+        <h2 class="text-danger">Form not completed. Event not added.</h2>
     </div>
 
 
