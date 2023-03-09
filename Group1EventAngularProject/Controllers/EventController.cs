@@ -98,7 +98,7 @@ namespace Group1EventAngularProject.Controllers
                 Event fav = dbContext.Events.FirstOrDefault(f => f.Id == E.EventsId);
                 events.Add(fav);
             }
-            return events.Where(e => e.Date >= DateTime.Now).ToList();
+            return events.Where(e => e.Date >= DateTime.Now).OrderBy(e => e.Date).ToList();
         }
 
         [HttpGet("chooseCategory/{category}")]
