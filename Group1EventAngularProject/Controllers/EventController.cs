@@ -100,6 +100,20 @@ namespace Group1EventAngularProject.Controllers
             }
             return events.Where(e => e.Date >= DateTime.Now).ToList();
         }
+
+        [HttpGet("chooseCategory")]
+        public List<Event> chooseCategory(string category)
+        {
+            if (string.IsNullOrEmpty(category))
+            {
+                return dbContext.Events.ToList();
+            }
+            else
+            {
+                return dbContext.Events.Where(e => e.Category == category && e.Date >= DateTime.Now).OrderBy(e => e.Date).ToList();
+            }
+        }
+
     }
 }
 

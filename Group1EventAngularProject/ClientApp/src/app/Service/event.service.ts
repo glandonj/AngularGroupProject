@@ -46,4 +46,11 @@ export class EventService {
   userFavorites(user:string):Observable<Event[]>{
     return this.http.get<Event[]>(`${this.baseUrl}api/Event/Favorites/${user}`);
   }
+
+  chooseCategory(category:string):Observable<Event[]>{
+    return this.http.get<Event[]>(`${this.baseUrl}api/Event/chooseCategory/${category}`);
+  }
+
+  
+
 }

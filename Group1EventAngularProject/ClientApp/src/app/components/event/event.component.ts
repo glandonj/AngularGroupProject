@@ -23,7 +23,7 @@ export class EventComponent implements OnInit {
   formcomplete:boolean=true;
   eventName:string="";
   categories = new Array();
-
+  category:string= "";
 
   ngOnInit(): void {
     this.getEvents();
@@ -73,6 +73,12 @@ export class EventComponent implements OnInit {
       console.log(response);
       this.getEvents();
 
+    });
+  }
+  chooseCategory(category: string): void {
+    this.eventservice.chooseCategory(category).subscribe((response: Event[]) => {
+      console.log(response);
+      this.events = response;
     });
   }
 

@@ -1,6 +1,14 @@
 <button (click)="toggleAdd()" (click)="eventConfirm=false" class="btn">Add Event</button>
 <br><br>
 
+<!-- Choose Category  -->
+<p>Choose by Category</p>
+<input list="categories" name="categories" [(ngModel)]="eventName" (keydown.enter)="chooseCategory(category)"/>
+<datalist id="categories">
+<option *ngFor="let category of categories" [value]="category">
+</datalist>
+<button (click)="chooseCategory(category)" class="btn-primary">Submit</button>
+
 <div *ngIf="AddEvent">
     <p>Category</p>
     <input type="text"[(ngModel)]="newEvent.category" id="category"/>
@@ -15,13 +23,16 @@
 
     <button (click)="addEvent()" (click)="toggleConfirm()" (click)="AddEvent=false" class="btn-primary">Add</button>
     </div>
+
+    <!-- Form complete feedback -->
     <div *ngIf="eventConfirm">
         <h2>{{eventName}} has been added!</h2>
     </div>
+    
+    <!-- Form Not Complete -->
     <div *ngIf="!formcomplete">
         <h2 class="text-danger">Form not completed. Event not added.</h2>
     </div>
-
 
 <h1>All Events</h1>
 <ul>
