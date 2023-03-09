@@ -75,10 +75,11 @@ export class EventComponent implements OnInit {
 
     });
   }
+  
   chooseCategory(category: string): void {
     this.eventservice.chooseCategory(category).subscribe((response: Event[]) => {
       console.log(response);
-      this.events = response;
+      this.events = response;      
     });
   }
 

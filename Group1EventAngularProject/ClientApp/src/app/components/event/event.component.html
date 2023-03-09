@@ -1,14 +1,6 @@
 <button (click)="toggleAdd()" (click)="eventConfirm=false" class="btn">Add Event</button>
 <br><br>
 
-<!-- Choose Category  -->
-<p>Choose by Category</p>
-<input list="categories" name="categories" [(ngModel)]="eventName" (keydown.enter)="chooseCategory(category)"/>
-<datalist id="categories">
-<option *ngFor="let category of categories" [value]="category">
-</datalist>
-<button (click)="chooseCategory(category)" class="btn-primary">Submit</button>
-
 <div *ngIf="AddEvent">
     <p>Category</p>
     <input type="text"[(ngModel)]="newEvent.category" id="category"/>
@@ -34,8 +26,17 @@
         <h2 class="text-danger">Form not completed. Event not added.</h2>
     </div>
 
-<h1>All Events</h1>
-<ul>
+    <h1>Events</h1>
+    <!-- Choose Category  -->
+    <p>Filter by Category</p>
+   
+    <input list="categories" name="categories" [(ngModel)]="category" (keydown.enter)="chooseCategory(category)"/>
+    <datalist id="categories">
+    <option *ngFor="let category of categories" [value]="category">
+    </datalist>
+    <button (click)="chooseCategory(category)" class="btn-primary">Submit</button>
+    <ul>
+        <button (click)="getEvents()" class="btn-primary">Get All Events</button>
     <div *ngFor="let e of events; index as i">
         <li class="card">
             <h3><a routerLink="/event/{{e.id}}">{{ e.name }}</a></h3>

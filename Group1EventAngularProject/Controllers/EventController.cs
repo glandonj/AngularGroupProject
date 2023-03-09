@@ -101,7 +101,8 @@ namespace Group1EventAngularProject.Controllers
             return events.Where(e => e.Date >= DateTime.Now).ToList();
         }
 
-        [HttpGet("chooseCategory")]
+        [HttpGet("chooseCategory/{category}")]
+        //[HttpGet("chooseCategory")]
         public List<Event> chooseCategory(string category)
         {
             if (string.IsNullOrEmpty(category))
